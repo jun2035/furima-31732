@@ -39,7 +39,6 @@
 | ---------- | ---------- | ------------------------------ |
 | user       | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
-| created_at | datetime   | null: false                    |
 
 ### Association
 - belongs_to :user
