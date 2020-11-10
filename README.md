@@ -32,7 +32,6 @@
 ### Association
 - belongs_to :user
 - has_one :purchase
-- has_one :shopping_address
 
 ## shipping_addressesテーブル
 
@@ -44,7 +43,7 @@
 | address        | string     | null: false                    | #番地
 | building_name  | string     |                                | #建物名
 | phone_number   | string     | null: false                    | #電話番号 ※ハイフンあり
-| item           | references | null: false, foreign_key: true |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
@@ -56,7 +55,7 @@
 | user       | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
 | created_at | datetime   | null: false                    |
-belongs_to :user
+
 ### Association
 - belongs_to :user
 - belongs_to :item
