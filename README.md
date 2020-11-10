@@ -1,15 +1,15 @@
 ## usersテーブル
 
-| Column          | Type   | Options                   |
-| --------------- | ------ | --------------------------|
-| nickname        | string | null: false               | #ニックネーム
-| email           | string | null: false, unique: true | #メールアドレス
-| password        | string | null: false               | #パスワード
-| last_name       | string | null: false               | #お名前(全角) 苗字
-| first_name      | string | null: false               | #お名前(全角) 名前
-| last_name_kana  | string | null: false               | #お名前カナ(全角) 苗字
-| first_name_kana | string | null: false               | #お名前カナ(全角) 名前
-| birthday        | date   | null: false               | #生年月日
+| Column             | Type   | Options                   |
+| ------------------ | ------ | --------------------------|
+| nickname           | string | null: false               | #ニックネーム
+| encrypted_password | string | null: false, unique: true | #メールアドレス
+| password           | string | null: false               | #パスワード
+| last_name          | string | null: false               | #お名前(全角) 苗字
+| first_name         | string | null: false               | #お名前(全角) 名前
+| last_name_kana     | string | null: false               | #お名前カナ(全角) 苗字
+| first_name_kana    | string | null: false               | #お名前カナ(全角) 名前
+| birthday           | date   | null: false               | #生年月日
 
 ### Association
 - has_many :items
@@ -47,7 +47,6 @@
 | item           | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :item
 - belongs_to :purchase
 
 ## purchasesテーブル
