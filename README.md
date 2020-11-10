@@ -33,6 +33,19 @@
 - belongs_to :user
 - has_one :purchase
 
+## purchasesテーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
+| created_at | datetime   | null: false                    |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping_address
+
 ## shipping_addressesテーブル
 
 | Column         | Type       | Options                        |
@@ -47,16 +60,3 @@
 
 ### Association
 - belongs_to :purchase
-
-## purchasesテーブル
-
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| user       | references | null: false, foreign_key: true |
-| item       | references | null: false, foreign_key: true |
-| created_at | datetime   | null: false                    |
-
-### Association
-- belongs_to :user
-- belongs_to :item
-- has_one :shipping_address
