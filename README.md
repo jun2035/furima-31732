@@ -3,8 +3,8 @@
 | Column             | Type   | Options                   |
 | ------------------ | ------ | --------------------------|
 | nickname           | string | null: false               | #ニックネーム
-| encrypted_password | string | null: false, unique: true | #メールアドレス
-| password           | string | null: false               | #パスワード
+| email              | string | null: false, unique: true | #メールアドレス
+| encrypted_password | string | null: false               | #パスワード
 | last_name          | string | null: false               | #お名前(全角) 苗字
 | first_name         | string | null: false               | #お名前(全角) 名前
 | last_name_kana     | string | null: false               | #お名前カナ(全角) 苗字
@@ -42,7 +42,7 @@
 | prefectures_id | integer    | null: false                    | #都道府県
 | city           | string     | null: false                    | #市区町村
 | address        | string     | null: false                    | #番地
-| building_name  | string     | null: false                    | #建物名
+| building_name  | string     |                                | #建物名
 | phone_number   | string     | null: false                    | #電話番号 ※ハイフンあり
 | item           | references | null: false, foreign_key: true |
 
