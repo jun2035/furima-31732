@@ -17,17 +17,17 @@
 
 ## itemsテーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| title          | string     | null: false                    | #商品名
-| text           | text       | null: false                    | #商品の説明
-| category_id    | integer    | null: false                    | #カテゴリー
-| status_id      | integer    | null: false                    | #商品の状態
-| shipping_id    | integer    | null: false                    | #配送料の負担
-| prefectures_id | integer    | null: false                    | #発送元の地域（都道府県）
-| days_id        | integer    | null: false                    | #発送までの日数
-| price          | integer    | null: false                    | #価格
-| user           | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| title         | string     | null: false                    | #商品名
+| text          | text       | null: false                    | #商品の説明
+| category_id   | integer    | null: false                    | #カテゴリー
+| status_id     | integer    | null: false                    | #商品の状態
+| shipping_id   | integer    | null: false                    | #配送料の負担
+| prefecture_id | integer    | null: false                    | #発送元の地域（都道府県）
+| day_id        | integer    | null: false                    | #発送までの日数
+| price         | integer    | null: false                    | #価格
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -47,15 +47,15 @@
 
 ## shipping_addressesテーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| postal_code    | string     | null: false                    | #郵便番号 ※ハイフンあり
-| prefectures_id | integer    | null: false                    | #都道府県
-| city           | string     | null: false                    | #市区町村
-| address        | string     | null: false                    | #番地
-| building_name  | string     |                                | #建物名
-| phone_number   | string     | null: false                    | #電話番号 ※ハイフンあり
-| purchase       | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    | #郵便番号 ※ハイフンあり
+| prefecture_id | integer    | null: false                    | #都道府県
+| city          | string     | null: false                    | #市区町村
+| address       | string     | null: false                    | #番地
+| building_name | string     |                                | #建物名
+| phone_number  | string     | null: false                    | #電話番号 ※ハイフンあり
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
