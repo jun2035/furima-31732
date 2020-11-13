@@ -12,14 +12,6 @@ RSpec.describe Item, type: :model do
       it '「image、title、text、price」が存在し、「category_id、status_id、shipping_id、prefecture_id、day_id」が初期値(0)以外を選択されていれば、登録できる' do
         expect(@item).to be_valid
       end
-      it 'priceの値が半角数字で300以上であれば、登録できる' do
-        @item.price = 300
-        expect(@item).to be_valid
-      end
-      it 'priceの値が半角数字で9999999以下であれば、登録できる' do
-        @item.price = 9_999_999
-        expect(@item).to be_valid
-      end
     end
 
     context '商品登録がうまくいかないとき' do
