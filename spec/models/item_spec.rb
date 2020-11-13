@@ -9,15 +9,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品新規登録' do
     context '商品登録がうまくいくとき' do
-      it 'image、title、text、priceが存在すれば、登録できる' do
-        expect(@item).to be_valid
-      end
-      it 'category_id、status_id、shipping_id、prefecture_id、day_id、が初期値(0)以外を選択されていれば、登録できる' do
-        @item.category_id = 2
-        @item.status_id = 2
-        @item.shipping_id = 2
-        @item.prefecture_id = 2
-        @item.day_id = 2
+      it '「image、title、text、price」が存在し、「category_id、status_id、shipping_id、prefecture_id、day_id」が初期値(0)以外を選択されていれば、登録できる' do
         expect(@item).to be_valid
       end
       it 'priceの値が半角数字で300以上であれば、登録できる' do
