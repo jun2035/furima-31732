@@ -47,10 +47,12 @@ class ItemsController < ApplicationController
 
   def move_to_index
     item = Item.find(params[:id])
-    if (user_signed_in? && current_user.id != item.user_id) || item.purchase != nil
+    if user_signed_in? && current_user.id != item.user_id
       redirect_to action: :index
     elsif !user_signed_in?
       render template: '/devise/sessions/new'
+    elsif item.purchase != nil
+      redirect_to action: :index
     end
   end
 end
