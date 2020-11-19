@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
-    Faker::Config.locale = 'ja'
     @user = FactoryBot.build(:user)
   end
 
