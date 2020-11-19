@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   before do
-    @order = FactoryBot.build(:order)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @order = FactoryBot.build(:order, user_id: user.id, item_id: item.id)
+    sleep(1)
   end
 
   describe '商品購入' do
@@ -54,6 +57,11 @@ RSpec.describe Order, type: :model do
       end
       it 'phone_numberが半角数字以外だと保存できないこと' do
         @order.phone_number = '090-1111-2222'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Phone number is invalid. Input half-width characters')
+      end
+      it 'phone_numberが12桁以上だと保存できないこと' do
+        @order.phone_number = '090111122223'
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is invalid. Input half-width characters')
       end
