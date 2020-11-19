@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!
   before_action :move_to_index
 
   def index
     @order = Order.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -20,13 +20,16 @@ class OrdersController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   # 全てのストロングパラメーターを1つに統合
   def order_params
     params.require(:order).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number).merge(token: params[:token], user_id: current_user.id, item_id: params[:item_id])
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
     redirect_to root_path if (current_user.id == @item.user_id) || !@item.purchase.nil?
   end
 

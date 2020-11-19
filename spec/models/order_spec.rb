@@ -5,16 +5,21 @@ RSpec.describe Order, type: :model do
     @order = FactoryBot.build(:order)
   end
 
+  #正常系のテスト
   it 'すべての値が正しく入力されていれば保存できること' do
     expect(@order).to be_valid
   end
+  it 'building_nameは空でも保存できること' do
+    @order.building_name = nil
+    expect(@order).to be_valid
+  end
 
+  #異常系のテスト
   it 'tokenが空では登録できないこと' do
     @order.token = nil
     @order.valid?
     expect(@order.errors.full_messages).to include("Token can't be blank")
   end
-
   it 'postal_codeが空だと保存できないこと' do
     @order.postal_code = nil
     @order.valid?
@@ -39,10 +44,6 @@ RSpec.describe Order, type: :model do
     @order.address = nil
     @order.valid?
     expect(@order.errors.full_messages).to include("Address can't be blank")
-  end
-  it 'building_nameは空でも保存できること' do
-    @order.building_name = nil
-    expect(@order).to be_valid
   end
   it 'phone_numberが空だと保存できないこと' do
     @order.phone_number = nil
